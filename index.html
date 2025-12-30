@@ -10,59 +10,19 @@
     <meta name="keywords" content="carnatic, karnatic, violin, tamil, tamil notation, krithi, keerthanai, kriti, keerthana, Carnatic notation, Tamil krithi, Carnatic violin, Thyagaraja">
     <meta name="author" content="Srinivasan Venkatesan">
     <meta name="robots" content="index, follow">
-    <meta name="language" content="en">
-    <meta name="image" content="https://svenka22.github.io/music-notes/images/violin.jpg">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Twitter tags kept as before -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Music Notation Library — Carnatic / Tamil Krithis & Violin Exercises">
     <meta property="og:description" content="A personal collection of Carnatic music notation, Tamil krithis and violin exercises. Notation, scales and krithi PDFs useful for Carnatic music students and violinists.">
     <meta property="og:image" content="https://svenka22.github.io/music-notes/images/violin.jpg">
-    <meta property="og:url" content="https://svenka22.github.io/music-notes/">
-    <meta property="og:site_name" content="Music Notation Library">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="ta_IN">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Music Notation Library — Carnatic / Tamil Krithis & Violin Exercises">
-    <meta name="twitter:description" content="A personal collection of Carnatic music notation, Tamil krithis and violin exercises. Notation, scales and krithi PDFs useful for Carnatic music students and violinists.">
-    <meta name="twitter:image" content="https://svenka22.github.io/music-notes/images/violin.jpg">
-    <meta name="twitter:site" content="@svenka22">
-    <meta name="twitter:creator" content="@svenka22">
-
-    <!-- Canonical: update to your live site URL if different -->
-    <link rel="canonical" href="https://svenka22.github.io/music-notes/">
-    <link rel="alternate" hreflang="en" href="https://svenka22.github.io/music-notes/">
-    <link rel="alternate" hreflang="ta" href="https://svenka22.github.io/music-notes/">
-
-    <!-- JSON-LD structured data for better search result context -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "Music Notation Library",
-      "description": "A personal collection of Carnatic music notation, Tamil krithis and violin exercises useful for Carnatic music students.",
-      "inLanguage": ["en", "ta"],
-      "keywords": ["carnatic", "karnatic", "violin", "tamil", "tamil notation", "krithi", "keerthanai", "kriti", "keerthana", "Carnatic notation", "Tamil krithi", "Carnatic violin", "Thyagaraja"],
-      "url": "https://svenka22.github.io/music-notes/",
-      "image": "https://svenka22.github.io/music-notes/images/violin.jpg",
-      "datePublished": "2025-12-30T17:45:52Z",
-      "dateModified": "2025-12-30T17:45:52Z",
-      "publisher": {
-        "@type": "Person",
-        "name": "Srinivasan Venkatesan",
-        "url": "https://github.com/svenka22"
-      }
-    }
-    </script>
 
     <style>
         /* Classic Aesthetic Styles */
         body {
-            font-family: "Georgia", "Times New Roman", serif; /* Classic serif font */
-            background-color: #fdfaf0; /* Warm parchment color */
-            color: #2e1a12; /* Deep brown text */
+            font-family: "Georgia", "Times New Roman", serif;
+            background-color: #fdfaf0;
+            color: #2e1a12;
             margin: 0;
             padding: 0;
             line-height: 1.6;
@@ -70,14 +30,14 @@
 
         .header-image {
             width: 100%;
-            height: 350px; /* Slightly taller to show off that great image */
+            height: 350px;
             object-fit: cover;
-            border-bottom: 4px solid #4e342e; /* Violin-wood brown border */
-            display: block; /* Removes tiny gap under image */
+            border-bottom: 4px solid #4e342e;
+            display: block;
         }
 
         .container {
-            max-width: 700px;
+            max-width: 900px; /* increased slightly to give more room */
             margin: 0 auto;
             padding: 40px 20px;
             text-align: center;
@@ -100,39 +60,56 @@
             padding-bottom: 10px;
         }
 
+        /* Table wrapper to allow horizontal scrolling on small screens */
+        .table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
         /* Table-based list styles */
         .notes-table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-            table-layout: fixed; /* allow consistent overflow handling so cells don't wrap to multiple lines */
+            table-layout: auto; /* allow columns to size naturally */
+            min-width: 700px; /* keep a sensible minimum so columns don't collapse too much */
         }
 
         .notes-table td {
-            padding: 12px 0;
+            padding: 12px 10px;
             border-bottom: 1px solid #e6dcd5;
-            text-align: center;
-
-            /* Keep each table cell on a single line */
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            vertical-align: middle;
         }
 
-        /* Anchor styling: clearly visible as clickable links while keeping a warm aesthetic */
+        /* First column (title) should take the majority of the space and show the full title */
+        .notes-table td.title {
+            width: 60%;
+            text-align: left;
+            white-space: normal; /* allow wrapping if necessary but prefer single line when space allows */
+            overflow: visible;
+        }
+
+        /* Other columns (raga/tala/composer) should stay on single lines */
+        .notes-table td.meta {
+            white-space: nowrap;
+            text-align: left;
+            color: #2e1a12;
+            font-size: 0.95rem;
+        }
+
+        /* Anchor styling */
         .notes-table a {
-            color: #1a56db; /* clear link-blue for recognizability */
-            background-color: rgba(255, 250, 235, 0.9); /* subtle warm highlight */
+            color: #1a56db;
+            background-color: rgba(255, 250, 235, 0.9);
             text-decoration: underline;
             text-underline-offset: 3px;
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             font-weight: 600;
-            padding: 6px 10px;
+            padding: 4px 6px;
             border-radius: 6px;
             display: inline-block;
             border: 2px solid transparent;
             transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
-            cursor: pointer;
         }
 
         .notes-table a:hover,
@@ -143,12 +120,6 @@
             box-shadow: 0 6px 18px rgba(46,26,18,0.08);
             border-color: #cdb59a;
             outline: none;
-        }
-
-        /* Strong keyboard focus indicator for accessibility */
-        .notes-table a:focus-visible {
-            outline: 3px solid #ffd54f;
-            outline-offset: 3px;
         }
 
         .pdf-icon {
@@ -163,6 +134,13 @@
             color: #a1887f;
             letter-spacing: 2px;
         }
+
+        /* Responsive tweaks */
+        @media (max-width: 720px) {
+            .container { padding: 20px 12px; }
+            .notes-table { min-width: 600px; }
+            .notes-table td.title { width: 55%; }
+        }
     </style>
 </head>
 <body>
@@ -170,24 +148,31 @@
     <img src="images/violin.jpg" alt="Classical violin on sheet music" class="header-image">
 
     <div class="container">
-        <h1>Music Notation</h1>
-        <p class="subtitle">A Personal Collection of notation of krithis in Tamil</p>
+        <h1>Music Notation — Carnatic & Tamil Krithis</h1>
+        <p class="subtitle">A personal collection of notation of krithis in Tamil — useful for Carnatic music students and violinists</p>
 
-        <table class="notes-table" role="presentation" aria-label="Music notation list">
+        <div class="table-wrap">
+        <table class="notes-table" role="table" aria-label="Music notation list">
             <tbody>
                 <tr>
-                    <td>
-                        <a href="pdfs/AadamodiGalade.pdf" target="_blank" rel="noopener noreferrer"><span class="pdf-icon">𝄢</span>Aadamodi galade || ஆடமோடி கலடே </a>
-                        || Charukesi ||  Adi ||  Sadguru Sri Thyagaraja swamigal
+                    <td class="title">
+                        <a href="pdfs/AadamodiGalade.pdf" target="_blank" rel="noopener noreferrer"><span class="pdf-icon">𝄢</span>Aadamodi galade || ஆடமோடி கலடே</a>
                     </td>
+                    <td class="meta">Charukesi</td>
+                    <td class="meta">Adi</td>
+                    <td class="meta">Sadguru Sri Thyagaraja swamigal</td>
                 </tr>
                 <tr>
-                    <td>
-                        <a href="Violin/scales.pdf" target="_blank" rel="noopener noreferrer"><span class="pdf-icon">𝄢</span> Major &amp; Minor Scales</a>
+                    <td class="title">
+                        <a href="Violin/scales.pdf" target="_blank" rel="noopener noreferrer"><span class="pdf-icon">𝄢</span>Major &amp; Minor Scales</a>
                     </td>
+                    <td class="meta">-</td>
+                    <td class="meta">-</td>
+                    <td class="meta">-</td>
                 </tr>
             </tbody>
         </table>
+        </div>
 
         <footer>
             &copy; 2026 MUSIC REPOSITORY
