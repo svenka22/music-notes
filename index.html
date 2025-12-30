@@ -47,16 +47,21 @@
             padding-bottom: 10px;
         }
 
-        ul {
-            list-style: none;
-            padding: 0;
+        /* Table-based list styles */
+        .notes-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
         }
 
-        li {
-            margin: 15px 0;
+        .notes-table td {
+            padding: 12px 0;
+            border-bottom: 1px solid #e6dcd5;
+            text-align: center;
         }
 
-        a {
+        /* retain anchor styling similar to previous list */
+        .notes-table a {
             text-decoration: none;
             color: #5d4037;
             font-size: 1.2rem;
@@ -64,7 +69,7 @@
             display: inline-block;
         }
 
-        a:hover {
+        .notes-table a:hover {
             color: #a1887f;
             transform: scale(1.05);
         }
@@ -91,14 +96,20 @@
         <h1>Music Notation</h1>
         <p class="subtitle">A Personal Collection of notation of krithis in Tamil</p>
 
-        <ul>
-            <li>
-                <a href="pdfs/AadamodiGalade.pdf"><span class="pdf-icon">𝄢</span> Aadamodi galade || ஆடமோடி கலடே || Charukesi ||  Adi ||  Sadguru Sri Thyagaraja swamigal</a>
-            </li>
-            <li>
-                <a href="Violin/scales.pdf"><span class="pdf-icon">𝄢</span> Major & Minor Scales</a>
-            </li>
-            </ul>
+        <table class="notes-table" role="presentation" aria-label="Music notation list">
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="pdfs/AadamodiGalade.pdf" target="_blank" rel="noopener noreferrer"><span class="pdf-icon">𝄢</span> Aadamodi galade || ஆடமோடி கலடே || Charukesi ||  Adi ||  Sadguru Sri Thyagaraja swamigal</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="Violin/scales.pdf" target="_blank" rel="noopener noreferrer"><span class="pdf-icon">𝄢</span> Major &amp; Minor Scales</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
         <footer>
             &copy; 2025 MUSIC REPOSITORY
