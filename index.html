@@ -60,18 +60,36 @@
             text-align: center;
         }
 
-        /* retain anchor styling similar to previous list */
+        /* Anchor styling: clearly visible as clickable links while keeping a warm aesthetic */
         .notes-table a {
-            text-decoration: none;
-            color: #5d4037;
+            color: #1a56db; /* clear link-blue for recognizability */
+            background-color: rgba(255, 250, 235, 0.9); /* subtle warm highlight */
+            text-decoration: underline;
+            text-underline-offset: 3px;
             font-size: 1.2rem;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 6px;
             display: inline-block;
+            border: 2px solid transparent;
+            transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+            cursor: pointer;
         }
 
-        .notes-table a:hover {
-            color: #a1887f;
-            transform: scale(1.05);
+        .notes-table a:hover,
+        .notes-table a:focus {
+            color: #0839a6;
+            background-color: #fff2d9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(46,26,18,0.08);
+            border-color: #cdb59a;
+            outline: none;
+        }
+
+        /* Strong keyboard focus indicator for accessibility */
+        .notes-table a:focus-visible {
+            outline: 3px solid #ffd54f;
+            outline-offset: 3px;
         }
 
         .pdf-icon {
