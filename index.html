@@ -17,9 +17,10 @@
 
         .header-image {
             width: 100%;
-            height: 300px;
+            height: 350px; /* Slightly taller to show off that great image */
             object-fit: cover;
             border-bottom: 4px solid #4e342e; /* Violin-wood brown border */
+            display: block; /* Removes tiny gap under image */
         }
 
         .container {
@@ -84,7 +85,7 @@
 </head>
 <body>
 
-    <img src="header.jpg" alt="Violin Header" class="header-image">
+    <img src="images/violin.jpg" alt="Classical violin on sheet music" class="header-image">
 
     <div class="container">
         <h1>Music Notation</h1>
@@ -92,15 +93,12 @@
 
         <ul>
             <li>
-                <a href="sonata_no_1.pdf"><span class="pdf-icon">𝄢</span> Sonata No. 1 in G Minor</a>
+                <a href="bach_sonata.pdf"><span class="pdf-icon">𝄢</span> Bach - Sonata No. 1</a>
             </li>
             <li>
-                <a href="Folder_Name/exercise_01.pdf"><span class="pdf-icon">𝄢</span> Daily Warm-ups & Scales</a>
+                <a href="Violin/scales.pdf"><span class="pdf-icon">𝄢</span> Major & Minor Scales</a>
             </li>
-            <li>
-                <a href="bach_partita.pdf"><span class="pdf-icon">𝄢</span> Bach - Partita No. 2</a>
-            </li>
-        </ul>
+            </ul>
 
         <footer>
             &copy; 2025 MUSIC REPOSITORY
