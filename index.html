@@ -52,12 +52,18 @@
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
+            table-layout: fixed; /* allow consistent overflow handling so cells don't wrap to multiple lines */
         }
 
         .notes-table td {
             padding: 12px 0;
             border-bottom: 1px solid #e6dcd5;
             text-align: center;
+
+            /* Keep each table cell on a single line */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         /* Anchor styling: clearly visible as clickable links while keeping a warm aesthetic */
