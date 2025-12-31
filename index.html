@@ -363,5 +363,63 @@
         </footer>
     </div>
 
+    <script>
+    /* 
+      Fit algorithm:
+      - Force single-line rows with CSS (white-space: nowrap).
+      - Use this script to reduce the table's font-size until the whole table fits inside its wrapper.
+      - This keeps rows on a single visual line, avoids ellipsis, and prevents a horizontal scrollbar.
+      - Safety: stops at minFontPx so text doesn't become unreadably small.
+    */
+    (function () {
+        const wrapper = document.querySelector('.table-wrap');
+        const table = document.querySelector('.notes-table');
+        if (!wrapper || !table) return;
+
+        const MIN_FONT_PX = 10; // do not reduce below this
+        const STEP_PX = 0.5;    // decrement step (smaller = smoother)
+        const INITIAL_FONT_PX = parseFloat(getComputedStyle(table).fontSize) || 16;
+
+        let requestedAnimation = null;
+        function fitTableToWrapper() {
+            // reset to initial font first so we try to use the regular size when possible
+            table.style.fontSize = INITIAL_FONT_PX + 'px';
+
+            // Bail early if it already fits
+            if (table.scrollWidth <= wrapper.clientWidth) return;
+
+            // Iteratively reduce font-size until it fits or minimum reached
+            let size = INITIAL_FONT_PX;
+            // Use a simple loop guarded with a safety count (avoid infinite loops)
+            let safety = 1000;
+            while (table.scrollWidth > wrapper.clientWidth && size > MIN_FONT_PX && safety-- > 0) {
+                size = Math.max(size - STEP_PX, MIN_FONT_PX);
+                table.style.fontSize = size + 'px';
+            }
+            // If after loop it still doesn't fit, we leave it at MIN_FONT_PX (best effort).
+            // At that point content will still be single-line; user can decide alternate UX.
+        }
+
+        // Debounced resize handling
+        let resizeTimer = null;
+        function scheduleFit() {
+            if (requestedAnimation) cancelAnimationFrame(requestedAnimation);
+            requestedAnimation = requestAnimationFrame(() => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(fitTableToWrapper, 80);
+            });
+        }
+
+        window.addEventListener('load', scheduleFit, { passive: true });
+        window.addEventListener('resize', scheduleFit, { passive: true });
+        // Also handle font loading
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(scheduleFit);
+        }
+        // Run once immediately (in case DOM already loaded)
+        scheduleFit();
+    })();
+    </script>
+
 </body>
 </html>
